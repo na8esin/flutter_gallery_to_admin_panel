@@ -71,7 +71,10 @@ class RouteConfiguration {
     ),
     Path(
       r'^/',
-      (context, match) => const RootPage(),
+      (context, match) => const StudyWrapper(
+        alignment: AlignmentDirectional.topCenter,
+        study: ReplyApp(),
+      ),
     ),
   ];
 
