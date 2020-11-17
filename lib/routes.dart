@@ -1,14 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:gallery/main.dart';
-import 'package:gallery/pages/demo.dart';
 import 'package:gallery/pages/home.dart';
-import 'package:gallery/studies/crane/app.dart';
-import 'package:gallery/studies/fortnightly/app.dart';
 import 'package:gallery/studies/rally/app.dart';
 import 'package:gallery/studies/reply/app.dart';
-import 'package:gallery/studies/shrine/app.dart';
-import 'package:gallery/studies/starter/app.dart';
 
 typedef PathWidgetBuilder = Widget Function(BuildContext, String);
 
@@ -39,24 +33,8 @@ class RouteConfiguration {
   /// take priority.
   static List<Path> paths = [
     Path(
-      r'^' + DemoPage.baseRoute + r'/([\w-]+)$',
-      (context, match) => DemoPage(slug: match),
-    ),
-    Path(
       r'^' + RallyApp.homeRoute,
       (context, match) => const StudyWrapper(study: RallyApp()),
-    ),
-    Path(
-      r'^' + ShrineApp.homeRoute,
-      (context, match) => const StudyWrapper(study: ShrineApp()),
-    ),
-    Path(
-      r'^' + CraneApp.defaultRoute,
-      (context, match) => const StudyWrapper(study: CraneApp()),
-    ),
-    Path(
-      r'^' + FortnightlyApp.defaultRoute,
-      (context, match) => const StudyWrapper(study: FortnightlyApp()),
     ),
     Path(
       r'^' + ReplyApp.homeRoute,
@@ -64,10 +42,6 @@ class RouteConfiguration {
         alignment: AlignmentDirectional.topCenter,
         study: ReplyApp(),
       ),
-    ),
-    Path(
-      r'^' + StarterApp.defaultRoute,
-      (context, match) => const StudyWrapper(study: StarterApp()),
     ),
     Path(
       r'^/',
