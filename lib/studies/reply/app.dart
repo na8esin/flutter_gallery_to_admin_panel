@@ -6,6 +6,7 @@ import 'package:gallery/layout/letter_spacing.dart';
 import 'package:gallery/studies/reply/adaptive_nav.dart';
 import 'package:gallery/studies/reply/colors.dart';
 import 'package:gallery/studies/reply/compose_page.dart';
+import 'package:gallery/studies/reply/login.dart';
 import 'package:gallery/studies/reply/model/email_model.dart';
 import 'package:gallery/studies/reply/model/email_store.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,6 +18,7 @@ class ReplyApp extends StatefulWidget {
   const ReplyApp();
 
   static const String homeRoute = '/reply';
+  static const String loginRoute = '/reply/login';
   static const String composeRoute = '/reply/compose';
 
   static Route createComposeRoute(RouteSettings settings) {
@@ -83,7 +85,7 @@ class _ReplyAppState extends State<ReplyApp> with RestorationMixin {
           localizationsDelegates: GalleryLocalizations.localizationsDelegates,
           supportedLocales: GalleryLocalizations.supportedLocales,
           locale: GalleryOptions.of(context).locale,
-          initialRoute: ReplyApp.homeRoute,
+          initialRoute: ReplyApp.loginRoute,
           onGenerateRoute: (settings) {
             switch (settings.name) {
               case ReplyApp.homeRoute:
@@ -94,6 +96,12 @@ class _ReplyAppState extends State<ReplyApp> with RestorationMixin {
                 break;
               case ReplyApp.composeRoute:
                 return ReplyApp.createComposeRoute(settings);
+                break;
+              case ReplyApp.loginRoute:
+                return MaterialPageRoute<void>(
+                  builder: (context) => const LoginPage(),
+                  settings: settings,
+                );
                 break;
             }
             return null;
